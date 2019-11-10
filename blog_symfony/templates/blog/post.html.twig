@@ -1,14 +1,52 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Post!{% endblock %}
+{% block title %}Post{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Post {{ id_post }}</h1>
-</div>
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <ul class="menu">
+                <li class="menu-text">SuperNomDeSociete</li>
+            </ul>
+        </div>
+        <div class="top-bar-right">
+            <ul class="menu">
+                <li><a href="#">Connexion</a></li>
+                <!--<li><a href="#">Nouvel article</a></li>
+                <li><a href="#">Lien deux</a></li>
+                <li><a href="#">lien trois</a></li>-->
+            </ul>
+        </div>
+    </div>
+    <div class="callout large primary">
+        <div class="row column text-center">
+            <h1>Post {{ id_post }}</h1>
+        </div>
+    </div>
+    <div class="row" id="content">
+        <div class="medium-8 columns">
+            <div class="blog-post">
+                <h3>Awesome blog post title</h3>
+                <img class="thumbnail" src="https://placehold.it/850x350">
+                <p>Praesent id metus massa, ut blandit odio. Proin quis tortor orci. Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum laoreet. Nunc eu ullamcorper orci. Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque faucibus vestibulum. Nulla at nulla justo, eget luctus.</p>
+            </div>
+        </div>
+        <div class="medium-3 columns" data-sticky-container>
+            <div class="sticky" data-sticky data-anchor="content">
+                <h4>Publié le <small>3/6/2015</small></h4>
+                <h4>Auteur(s) :</h4>
+                <ul>
+                    <li><a href="#">Billy</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row column">
+        <p>Retour à la <a href='/'>page d'accueil</a>.</p>
+    </div>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+    <script>
+          $(document).foundation();
+    </script>
 {% endblock %}
