@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Post{% endblock %}
+
+{% block body %}
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <ul class="menu">
+                <li class="menu-text">Blog de SuperCookies2000</li>
+            </ul>
+        </div>
+        <div class="top-bar-right">
+            <ul class="menu">
+                <li><a href="#">Connexion</a></li>
+                <!--<li><a href="#">Nouvel article</a></li>
+                <li><a href="#">Lien deux</a></li>
+                <li><a href="#">lien trois</a></li>-->
+            </ul>
+        </div>
+    </div>
+    <div class="callout large primary">
+        <div class="row column text-center">
+            <h1>Post {{ id_post }}</h1>
+        </div>
+    </div>
+    <div class="row" id="content">
+        <div class="medium-8 columns">
+            <div class="blog-post">
+                <h3>$title</h3>
+                <img class="thumbnail" src="https://placehold.it/850x350">
+                <p>$contents</p>
+            </div>
+        </div>
+        <div class="medium-3 columns" data-sticky-container>
+            <div class="sticky" data-sticky data-anchor="content">
+                <h4>Publié le <small>$published</small></h4>
+                <h4>Sujet :</h4>
+                <ul>
+                    <li><a href="#">#$slug</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row column">
+        <p>Retour à la <a href='/'>page d'accueil</a>.</p>
+    </div>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+    <script>
+          $(document).foundation();
+    </script>
+{% endblock %}
