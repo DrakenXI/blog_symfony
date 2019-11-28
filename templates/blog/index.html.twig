@@ -30,46 +30,20 @@
     </div>
 </div>
 <div class="row" id="content">
-    <div class="blog-post">
-        <h3><a href='/post/1'>$titre</a> <small>$published</small></h3>
-        <img class="thumbnail" src="https://placehold.it/850x350">
-        <p>$content</p>
-        <div class="callout">
-            <ul class="menu simple">
-                <li>Sujet :<a href="#">#$slug</a></li>
-            </ul>
+
+    {% for post in posts %}
+        <div class="blog-post">
+            <h3><a href='/post/1'>{{ post.titre }}</a> <small>{{ post.published|date("m/d/Y") }}</small></h3>
+            <img class="thumbnail" src="https://placehold.it/850x350">
+            <p>{{ post.content }}</p>
+            <div class="callout">
+                <ul class="menu simple">
+                    <li>Sujet :<a href="#"></a></li>
+                </ul>
+            </div>
         </div>
-    </div>
-    <div class="blog-post">
-        <h3><a href='/post/2'>La saison des raclettes est ouverte</a> <small>3/6/2015</small></h3>
-        <img class="thumbnail" src="https://placehold.it/850x350">
-        <p>Praesent id metus massa, ut blandit odio. Proin quis tortor orci. Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum laoreet. Nunc eu ullamcorper orci. Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque faucibus vestibulum. Nulla at nulla justo, eget luctus.</p>
-        <div class="callout">
-            <ul class="menu simple">
-                <li>Sujet :<a href="#">#patates</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="blog-post">
-        <h3><a href='/post/3'>Vive les pandas</a> <small>3/6/2015</small></h3>
-        <img class="thumbnail" src="https://placehold.it/850x350">
-        <p>Praesent id metus massa, ut blandit odio. Proin quis tortor orci. Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum laoreet. Nunc eu ullamcorper orci. Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque faucibus vestibulum. Nulla at nulla justo, eget luctus.</p>
-        <div class="callout">
-            <ul class="menu simple">
-                <li>Sujet :<a href="#">#pandas</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="blog-post">
-        <h3><a href='/post/4'>Awesome blog post title</a> <small>3/6/2015</small></h3>
-        <img class="thumbnail" src="https://placehold.it/850x350">
-        <p>Praesent id metus massa, ut blandit odio. Proin quis tortor orci. Etiam at risus et justo dignissim congue. Donec congue lacinia dui, a porttitor lectus condimentum laoreet. Nunc eu ullamcorper orci. Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque faucibus vestibulum. Nulla at nulla justo, eget luctus.</p>
-        <div class="callout">
-            <ul class="menu simple">
-                <li>Sujet :<a href="#">#slug</a></li>
-            </ul>
-        </div>
-    </div>
+    {% endfor %}
+
 </div>
 <div class="row column">
     <ul class="pagination" role="navigation" aria-label="Pagination">
