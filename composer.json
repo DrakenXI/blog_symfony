@@ -66,8 +66,7 @@
         },
         "post-install-cmd": [
             "@auto-scripts",
-            "php bin/console doctrine:schema:update --force",
-            "php bin/console doctrine:database:import FillDB.sql"
+            "php bin/console doctrine:schema:update --force"
         ],
         "post-update-cmd": [
             "@auto-scripts"
