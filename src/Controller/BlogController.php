@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Post;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -17,7 +18,12 @@ class BlogController extends AbstractController
      */
     public function index()
     {
-        return $this->render('blog/index.html.twig', []);
+        $posts = $this->getDoctrine()->getRepository(Post::class)
+            ->findBy([], array("published" => "DESC"), 10);
+        return $this->render('blog/index.html.twig', [
+            "title" => "Acceuil",
+            "posts" => $posts
+        ]);
     }
 
     /**
