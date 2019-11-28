@@ -34,7 +34,6 @@
     {% for post in posts %}
         <div class="blog-post">
             <h3><a href='/post/1'>{{ post.titre }}</a> <small>{{ post.published|date("m/d/Y") }}</small></h3>
-            <img class="thumbnail" src="https://placehold.it/850x350">
             <p>{{ post.content }}</p>
             <div class="callout">
                 <ul class="menu simple">
