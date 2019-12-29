@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Controller associé aux vues du site
+ * Controller associe aux vues du site
  */
 class BlogController extends AbstractController
 {

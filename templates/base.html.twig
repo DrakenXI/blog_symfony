@@ -3,7 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %} <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css"> {% endblock %}
+        {% block stylesheets %} <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css"> <link rel="stylesheet" href="{{ asset('css/main.css') }}"> {% endblock %}
+
     </head>
     <body>
         {% block body %}{% endblock %}

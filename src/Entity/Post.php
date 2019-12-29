@@ -3,6 +3,10 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType as DateTimeType;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Type;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PostRepository")
@@ -77,15 +81,27 @@ class Post
         return $this;
     }
 
-    public function getPublished(): ?\DateTimeInterface
+    public function getPublished(): \DateTime
     {
         return $this->published;
     }
 
-    public function setPublished(\DateTimeInterface $published): self
+    public function setPublished(\DateTime $published): self
     {
         $this->published = $published;
 
         return $this;
+    }
+
+    // check that forms is well filled or not
+    public static function loadValidatorMetadata(ClassMetadata $metadata)
+    {
+        $metadata->addPropertyConstraint('titre', new NotBlank());
+        $metadata->addPropertyConstraint('url_alias', new NotBlank());
+        $metadata->addPropertyConstraint('content', new NotBlank());
+        $metadata->addPropertyConstraint(
+            'published',
+            new Type(\DateTime::class)
+        );
     }
 }

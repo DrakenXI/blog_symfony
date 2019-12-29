@@ -14,6 +14,7 @@
             <li class="menu-text"><a href="/">Blog de SuperCookies2000</a></li>
         </ul>
     </div>
+
     <div class="top-bar-right">
         <ul class="menu">
             <li><a href="#">Connexion</a></li>
@@ -27,13 +28,23 @@
 <div class="callout large primary">
     <div class="row column text-center">
         <h1>Derniers billets</h1>
+        <!-- If there is any flash messages, display them in a pop-up -->
+        <!-- More about flash messages : https://symfony.com/doc/current/controller.html#flash-messages -->
+        {% for message in app.flashes('notice') %}
+        <div data-closable class="callout alert-callout-border success">
+            <strong>Yay!</strong> - {{ message }}
+            <!--<button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                <span aria-hidden="true">&times;</span>
+            </button>-->
+        </div>
+        {% endfor %}
     </div>
 </div>
 <div class="row" id="content">
 
     {% for post in posts %}
         <div class="blog-post">
-            <h3><a href='/post/1'>{{ post.titre }}</a> <small>{{ post.published|date("m/d/Y") }}</small></h3>
+            <h3 class="type-sidelines"><span><a href='/post/1'>{{ post.titre }}</a> <small>{{ post.published|date("m/d/Y") }}</small></span></h3>
             <p>{{ post.content }}</p>
             <div class="callout">
                 <ul class="menu simple">
