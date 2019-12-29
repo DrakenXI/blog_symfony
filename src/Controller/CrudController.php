@@ -42,9 +42,9 @@ class CrudController extends AbstractController
             $post = $form->getData();
 
             // TODO : save to database
-            //$entityManager = $this->getDoctrine()->getManager();
-            //$entityManager->persist($post);
-            //$entityManager->flush();
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($post);
+            $entityManager->flush();
 
             // inform user everything went fine
             $this->addFlash(
