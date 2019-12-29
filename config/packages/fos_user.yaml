@@ -1,0 +1,7 @@
+fos_user :
+  db_driver: orm
+  firewall_name: main
+  user_class: App\Entity\Userfos
+  from_email:
+    address: "supercoockies@desgenetez.fr"
+    sender_name: "supercoockies@desgenetez.fr"
