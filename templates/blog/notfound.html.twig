@@ -27,7 +27,7 @@
 
 <div class="callout large primary">
     <div class="row column text-center">
-        <h1>{{ title }}</h1>
+        <h1>Oups... L'article ne semble pas exister...</h1>
         <!-- If there is any flash messages, display them in a pop-up -->
         <!-- More about flash messages : https://symfony.com/doc/current/controller.html#flash-messages -->
         {% for message in app.flashes('notice') %}
@@ -41,27 +41,7 @@
     </div>
 </div>
 <div class="row" id="content">
-
-    {% for post in posts %}
-        <div class="blog-post">
-            <h3 class="type-sidelines"><span><a href='/post/{{ post.urlalias }}/'>{{ post.titre }}</a> <small>{{ post.published|date("m/d/Y") }}</small></span></h3>
-            <p>{{ post.content }}</p>
-        </div>
-    {% endfor %}
-
-</div>
-<div class="row column">
-    <ul class="pagination" role="navigation" aria-label="Pagination">
-        <li class="disabled">Previous</li>
-        <li class="current"><span class="show-for-sr">You're on page</span> 1</li>
-        <li><a href="#" aria-label="Page 2">2</a></li>
-        <li><a href="#" aria-label="Page 3">3</a></li>
-        <li><a href="#" aria-label="Page 4">4</a></li>
-        <li class="ellipsis"></li>
-        <li><a href="#" aria-label="Page 12">12</a></li>
-        <li><a href="#" aria-label="Page 13">13</a></li>
-        <li><a href="#" aria-label="Next page">Next</a></li>
-    </ul>
+    <p>TODO faire message excuse, rediriger user vers qqch, meme si admin</p>
 </div>
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>

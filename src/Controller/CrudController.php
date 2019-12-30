@@ -24,7 +24,6 @@ class CrudController extends AbstractController
         $post->setUrlAlias('une-super-url');
         $post->setContent('Un joli contenu.');
         $post->setPublished(new \DateTime('tomorrow'));
-        // TODO modify date time
 
         // create form with previous object
         $form = $this->createFormBuilder($post)
@@ -37,11 +36,12 @@ class CrudController extends AbstractController
 
             $form->handleRequest($request);
 
+        // if OK, save post in DB
         if ($form->isSubmitted() && $form->isValid()) {
             // $form->getData() holds the submitted values
             $post = $form->getData();
 
-            // TODO : save to database
+            // save to database
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($post);
             $entityManager->flush();
@@ -61,15 +61,68 @@ class CrudController extends AbstractController
     }
 
     /**
-     * Fonction associant la vue de la page d'accueil à l'adresse /.
-     * Page d'accueil liste tous les posts du blog.
-     * @Route("/update/{idPost}", name="update", requirements={"idPost"="\d+"})
+     * Fonction associant la vue de la page d'accueil à l'adresse /update/url.
+     * Page d'admin pour modifier un article du blog.
+     * @Route("/update/{url}", name="update", requirements={"url"="([a-zA-Z0-9]*)+(-[a-zA-Z0-9]+)*"})
      */
-    public function update(int $idPost)
+    public function update(string $url, Request $request)
     {
-        return $this->render('crud/update.html.twig', [
-            'id_post' => $idPost,
-        ]);
+        // fetch post from DB
+        $entityManager = $this->getDoctrine()->getManager();
+        $p = $entityManager->getRepository(Post::class)->findOneBy(['url_alias' => $url]);
+
+        if($p) {
+            // post exists, make form to update it
+            $post = new Post();
+            $post->setTitre($p->getTitre());
+            $post->setUrlAlias($p->getUrlAlias());
+            $post->setContent($p->getContent());
+            $post->setPublished($p->getPublished());
+
+            // create form with previous object
+            $form = $this->createFormBuilder($post)
+                ->add('titre', TextType::class)
+                ->add('url_alias', TextType::class)
+                ->add('content', TextareaType::class)
+                ->add('published', DateType::class)
+                ->add('save', SubmitType::class)
+                ->getForm();
+
+                $form->handleRequest($request);
+
+            // if OK, save post in DB
+            if ($form->isSubmitted() && $form->isValid()) {
+                // $form->getData() holds the submitted values
+                $newPost = $form->getData();
+
+                //update values
+                $p->setTitre($newPost->getTitre());
+                $p->setUrlAlias($newPost->getUrlAlias());
+                $p->setContent($newPost->getContent());
+                $p->setPublished($newPost->getPublished());
+                // save to database
+                $entityManager->flush();
+
+                // inform user everything went fine
+                $this->addFlash(
+                    'notice',
+                    'Article modifié !'
+                );
+
+                // now data is saved, user go back to article in question
+                return $this->redirectToRoute('post', [
+                    'url' => $post->getUrlAlias()
+                ]);
+            }
+
+            return $this->render('crud/update.html.twig',  array('form' =>     $form->createView(), 'url' => $url,));
+        } else {
+            // throw $this->createNotFoundException(
+            //     'No product found for post '.$url
+            // );
+            // post does not exist, inform user (this should not happen)
+            return $this->render('blog/notfound.html.twig',[]);
+        }
     }
 
     /**
