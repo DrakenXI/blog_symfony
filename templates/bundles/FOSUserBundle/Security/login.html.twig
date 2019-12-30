@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Login{% endblock %}
+
+{% block nav %}{% include 'partials/nav.html.twig' %}{% endblock %}
+
+{% block body %}
+
+    <div class="row" id="content">
+
+        {% block fos_user_content %}
+            {{ include('@FOSUser/Security/login_content.html.twig') }}
+        {% endblock fos_user_content %}
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+    <script>
+        $(document).foundation();
+    </script>
+{% endblock %}

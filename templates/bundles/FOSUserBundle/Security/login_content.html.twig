@@ -1,0 +1,25 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% if error %}
+    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+
+<form action="{{ path("fos_user_security_check") }}" method="post">
+    <div class="sign-in-form">
+        <h4 class="text-center">{{ 'security.login.submit'|trans }}</h4>
+        {% if csrf_token %}
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+        {% endif %}
+
+        <label for="username">{{ 'security.login.username'|trans }}</label>
+        <input class="sign-in-form-username" type="text" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" />
+
+        <label for="password">{{ 'security.login.password'|trans }}</label>
+        <input class="sign-in-form-password" type="password" id="password" name="_password" required="required" autocomplete="current-password" />
+
+        <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+        <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+
+        <input class="sign-in-form-button" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+    </div>
+</form>
