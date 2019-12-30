@@ -61,18 +61,18 @@ class CrudController extends AbstractController
     }
 
     /**
-     * Fonction associant la vue de la page d'accueil à l'adresse /update/url.
+     * Fonction associant la vue de la page d'accueil à l'adresse /edit/url.
      * Page d'admin pour modifier un article du blog.
-     * @Route("/update/{url}", name="update", requirements={"url"="([a-zA-Z0-9]*)+(-[a-zA-Z0-9]+)*"})
+     * @Route("/edit/{url}", name="edit", requirements={"url"="([a-zA-Z0-9]*)+(-[a-zA-Z0-9]+)*"})
      */
-    public function update(string $url, Request $request)
+    public function edit(string $url, Request $request)
     {
         // fetch post from DB
         $entityManager = $this->getDoctrine()->getManager();
         $p = $entityManager->getRepository(Post::class)->findOneBy(['url_alias' => $url]);
 
         if($p) {
-            // post exists, make form to update it
+            // post exists, make form to edit it
             $post = new Post();
             $post->setTitre($p->getTitre());
             $post->setUrlAlias($p->getUrlAlias());
@@ -95,7 +95,7 @@ class CrudController extends AbstractController
                 // $form->getData() holds the submitted values
                 $newPost = $form->getData();
 
-                //update values
+                //edit values
                 $p->setTitre($newPost->getTitre());
                 $p->setUrlAlias($newPost->getUrlAlias());
                 $p->setContent($newPost->getContent());
@@ -115,7 +115,7 @@ class CrudController extends AbstractController
                 ]);
             }
 
-            return $this->render('crud/update.html.twig',  array('form' =>     $form->createView(), 'url' => $url,));
+            return $this->render('crud/edit.html.twig',  array('form' =>     $form->createView(), 'url' => $url,));
         } else {
             // throw $this->createNotFoundException(
             //     'No product found for post '.$url
@@ -131,6 +131,8 @@ class CrudController extends AbstractController
      */
     public function delete(int $idPost)
     {
+        $entityManager = $this->getDoctrine()->getManager();
+        $product = $entityManager->getRepository(Product::class)->find($id);
         return $this->render('crud/delete.html.twig', [
             'id_post' => $idPost,
         ]);
