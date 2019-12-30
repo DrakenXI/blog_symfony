@@ -6,7 +6,7 @@
 
 <form action="{{ path("fos_user_security_check") }}" method="post">
     <div class="sign-in-form">
-        <h4 class="text-center">{{ 'security.login.submit'|trans }}</h4>
+        <h4 class="text-center">{{ 'layout.login'|trans }}</h4>
         {% if csrf_token %}
             <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
         {% endif %}
