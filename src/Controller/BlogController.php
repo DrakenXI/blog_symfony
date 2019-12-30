@@ -21,14 +21,14 @@ class BlogController extends AbstractController
         $posts = $this->getDoctrine()->getRepository(Post::class)
             ->findBy([], array("published" => "DESC"), 10);
         return $this->render('blog/index.html.twig', [
-            "title" => "Accueil",
+            "title" => "Derniers articles",
             "posts" => $posts
         ]);
     }
 
     /**
      * Fonction associant la vue d'un post individuel à l'adresse /posts/{idPost}.
-     * @Route("/post/{url}", name="post", requirements={"url"="([a-zA-Z0-9]*)+(-[a-zA-Z0-9]+)*"})
+     * @Route("/post/{url}", name="post", requirements={"url"="[a-zA-Z0-9]+([a-zA-Z0-9]*)(_[a-zA-Z0-9]+|-[a-zA-Z0-9]+)*"})
      */
     public function post(string $url)
     {

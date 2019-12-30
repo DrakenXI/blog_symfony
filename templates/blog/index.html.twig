@@ -44,8 +44,8 @@
 
     {% for post in posts %}
         <div class="blog-post">
-            <h3 class="type-sidelines"><span><a href='/post/{{ post.urlalias }}/'>{{ post.titre }}</a> <small>{{ post.published|date("m/d/Y") }}</small></span></h3>
-            <p>{{ post.content }}</p>
+            <h3 class="type-sidelines"><span>{{ post.titre }} <small>{{ post.published|date("d/m/Y") }}</small></span></h3>
+            <a href='{{path('post', {url: post.urlalias}) }}'>Lire l'article</a>
         </div>
     {% endfor %}
 
