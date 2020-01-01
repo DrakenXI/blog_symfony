@@ -1,32 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Modifier{% endblock %}
+{% block title %}Modifier un article{% endblock %}
+
+{% block nav %}{% include 'partials/nav.html.twig' %}{% endblock %}
 
 {% block body %}
 
-    <style>
-        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-    </style>
-
-    <div class="top-bar">
-        <div class="top-bar-left">
-            <ul class="menu">
-                <li class="menu-text"><a href="/">Blog de SuperCookies2000</a></li>
-            </ul>
-        </div>
-        <div class="top-bar-right">
-            <ul class="menu">
-                <li><a href="#">Connexion</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="callout large primary">
+    <div class="small-banner callout large primary">
         <div class="row column text-center">
             <h1>{{ title }}</h1>
-            {{ form(form) }}
         </div>
+        {% for message in app.flashes('notice') %}
+        <div data-closable class="callout alert-callout-border success">
+            <strong>Yay!</strong><p>{{ message }}</p>
+            <!--<button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                <span aria-hidden="true">&times;</span>
+            </button>-->
+        </div>
+        {% endfor %}
+    </div>
+    <div class="row column">
+        {{ form(form) }}
     </div>
 
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>

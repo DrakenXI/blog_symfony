@@ -2,49 +2,58 @@
 
 {% block title %}Blog{% endblock %}
 
-
 {% block nav %}{% include 'partials/nav.html.twig' %}{% endblock %}
 
 {% block body %}
+<div id="main-content-section" data-magellan-target="main-content-section">
+    <div class="banner callout large primary bandeau">
+        <div class="row column text-center">
+            <h1>{{ title }}</h1>
+            <p>Bienvenue sur le blog de SuperCookies2000. Ici vous trouverez différents articles sur le thème des cookies !</p>
+            <br/>
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <p>Bon retour parmi nous {{ app.user.username }}.</p>
+            {% else %}
+                <p>Connectez-vous pour consulter les articles. :)</p>
+                <button class="button large"><a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a></button>
+                <button class="button large"><a href="{{ path('fos_user_registration_register') }}">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a></button>
+            {% endif %}
 
-
-<div class="callout large primary">
-    <div class="row column text-center">
-        <h1>{{ title }}</h1>
-        <!-- If there is any flash messages, display them in a pop-up -->
-        <!-- More about flash messages : https://symfony.com/doc/current/controller.html#flash-messages -->
-        {% for message in app.flashes('notice') %}
-        <div data-closable class="callout alert-callout-border success">
-            <strong>Yay!</strong> - {{ message }}
-            <!--<button class="close-button" aria-label="Dismiss alert" type="button" data-close>
-                <span aria-hidden="true">&times;</span>
-            </button>-->
+            <!-- If there is any flash messages, display them in a pop-up -->
+            <!-- More about flash messages : https://symfony.com/doc/current/controller.html#flash-messages -->
+            {% for message in app.flashes('notice') %}
+            <div data-closable class="callout alert-callout-border success">
+                <strong>Yay!</strong><p>{{ message }}</p>
+                <!--<button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                    <span aria-hidden="true">&times;</span>
+                </button>-->
+            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
-</div>
-<div class="row" id="content">
+    <div class="row" id="content">
+        {% for post in posts %}
+            <div class="blog-post">
+                <h3 class="type-sidelines"><span>{{ post.titre }} <small>{{ post.published|date("d/m/Y") }}</small></span></h3>
+                <a href='{{path('post', {url: post.urlalias}) }}'>Lire l'article</a>
+            </div>
+        {% endfor %}
 
-    {% for post in posts %}
-        <div class="blog-post">
-            <h3 class="type-sidelines"><span>{{ post.titre }} <small>{{ post.published|date("d/m/Y") }}</small></span></h3>
-            <a href='{{path('post', {url: post.urlalias}) }}'>Lire l'article</a>
-        </div>
-    {% endfor %}
+    </div>
+    <!--<div class="row column">
+        <ul class="pagination" role="navigation" aria-label="Pagination">
+            <li class="disabled">Précédent</li>
+            <li class="current"><span class="show-for-sr">Vous êtes sur la page</span> 1</li>
+            <li><a href="#" aria-label="Page 2">2</a></li>
+            <li><a href="#" aria-label="Page 3">3</a></li>
+            <li><a href="#" aria-label="Page 4">4</a></li>
+            <li class="ellipsis"></li>
+            <li><a href="#" aria-label="Page 12">12</a></li>
+            <li><a href="#" aria-label="Page 13">13</a></li>
+            <li><a href="#" aria-label="Next page">Suivant</a></li>
+        </ul>
+    </div>-->
 
-</div>
-<div class="row column">
-    <ul class="pagination" role="navigation" aria-label="Pagination">
-        <li class="disabled">Previous</li>
-        <li class="current"><span class="show-for-sr">You're on page</span> 1</li>
-        <li><a href="#" aria-label="Page 2">2</a></li>
-        <li><a href="#" aria-label="Page 3">3</a></li>
-        <li><a href="#" aria-label="Page 4">4</a></li>
-        <li class="ellipsis"></li>
-        <li><a href="#" aria-label="Page 12">12</a></li>
-        <li><a href="#" aria-label="Page 13">13</a></li>
-        <li><a href="#" aria-label="Next page">Next</a></li>
-    </ul>
 </div>
 
 {% endblock %}

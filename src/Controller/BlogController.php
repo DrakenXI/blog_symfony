@@ -21,7 +21,7 @@ class BlogController extends AbstractController
         $posts = $this->getDoctrine()->getRepository(Post::class)
             ->findBy([], array("published" => "DESC"), 10);
         return $this->render('blog/index.html.twig', [
-            "title" => "Derniers articles",
+            "title" => "Bienvenue",
             "posts" => $posts
         ]);
     }

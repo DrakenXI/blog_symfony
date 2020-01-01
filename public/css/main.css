@@ -1,10 +1,56 @@
+/* banner before content */
+.banner { background: url(/assets/cookies.jpg) center center no-repeat;
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+            -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+        flex-direction: column;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+        align-items: center;
+            -webkit-justify-content: space-between;
+            -ms-flex-pack: justify;
+        justify-content: space-between;
+        height: 400px;
+        text-align: center;
+        color: #fefefe;
+        text-shadow: 2px 2px 3px black;
+}
+.small-banner { background: url(/assets/cookies.jpg) center center no-repeat;
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+            -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+        flex-direction: column;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+        align-items: center;
+            -webkit-justify-content: space-between;
+            -ms-flex-pack: justify;
+        justify-content: space-between;
+        height: 200px;
+        text-align: center;
+        color: #fefefe;
+        text-shadow: 2px 2px 3px black;
+}
+.blog-post { margin-top: 1% ; margin-top: 1%;}
+
+
 /* for flash messages */
 
-.alert-callout-border {
+.alert-callout-border{
   width: 100%;
   padding: 1.3rem;
   border-left-width: 0.3125rem;
   border-left-color: #cacaca;
+  opacity: 0.5;
+  filter: alpha(opacity=50); /* For IE8 and earlier */
 }
 
 .alert-callout-border strong {
@@ -47,7 +93,7 @@
   color: #cc4b37;
 }
 
-.alert-callout-border.success {
+.alert-callout-border.success{
   border-left-color: #3adb76;
 }
 
@@ -62,8 +108,6 @@
 .alert-callout-border.warning strong {
   color: #ffae00;
 }
-
-
 
 
 /* pretty article title */
