@@ -2,65 +2,60 @@
 
 {% block title %}Blog{% endblock %}
 
+{% block nav %}{% include 'partials/nav.html.twig' %}{% endblock %}
+
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<div id="main-content-section" data-magellan-target="main-content-section">
+    <div class="banner callout large primary bandeau">
+        <div class="row column text-center">
+            <h1>{{ title }}</h1>
+            <p>Bienvenue sur le blog de SuperCookies2000. Ici vous trouverez différents articles sur le thème des cookies !</p>
+            <br/>
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <p>Bon retour parmi nous {{ app.user.username }}.</p>
+            {% else %}
+                <p>Connectez-vous pour consulter les articles. :)</p>
+                <button class="button large"><a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a></button>
+                <button class="button large"><a href="{{ path('fos_user_registration_register') }}">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a></button>
+            {% endif %}
 
-<div class="top-bar">
-    <div class="top-bar-left">
-        <ul class="menu">
-            <li class="menu-text"><a href="/">Blog de SuperCookies2000</a></li>
-        </ul>
-    </div>
-    <div class="top-bar-right">
-        <ul class="menu">
-            <li><a href="#">Connexion</a></li>
-            <!--<li><a href="#">Nouvel article</a></li>
-            <li><a href="#">Lien deux</a></li>
-            <li><a href="#">lien trois</a></li>-->
-        </ul>
-    </div>
-</div>
-
-<div class="callout large primary">
-    <div class="row column text-center">
-        <h1>Derniers billets</h1>
-    </div>
-</div>
-<div class="row" id="content">
-
-    {% for post in posts %}
-        <div class="blog-post">
-            <h3><a href='/post/1'>{{ post.titre }}</a> <small>{{ post.published|date("m/d/Y") }}</small></h3>
-            <p>{{ post.content }}</p>
-            <div class="callout">
-                <ul class="menu simple">
-                    <li>Sujet :<a href="#"></a></li>
-                </ul>
+            <!-- If there is any flash messages, display them in a pop-up -->
+            <!-- More about flash messages : https://symfony.com/doc/current/controller.html#flash-messages -->
+            {% for message in app.flashes('notice') %}
+            <div data-closable class="callout alert-callout-border success">
+                <strong>Yay!</strong><p>{{ message }}</p>
+                <!--<button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                    <span aria-hidden="true">&times;</span>
+                </button>-->
             </div>
+            {% endfor %}
         </div>
-    {% endfor %}
+    </div>
+    <div class="row" id="content">
+        {% for post in posts %}
+            <div class="blog-post">
+                <h3 class="type-sidelines"><span>{{ post.titre }} <small>{{ post.published|date("d/m/Y") }}</small></span></h3>
+                <a href='{{path('post', {url: post.urlalias}) }}'>Lire l'article</a>
+            </div>
+        {% endfor %}
+
+    </div>
+    <!--<div class="row column">
+        <ul class="pagination" role="navigation" aria-label="Pagination">
+            <li class="disabled">Précédent</li>
+            <li class="current"><span class="show-for-sr">Vous êtes sur la page</span> 1</li>
+            <li><a href="#" aria-label="Page 2">2</a></li>
+            <li><a href="#" aria-label="Page 3">3</a></li>
+            <li><a href="#" aria-label="Page 4">4</a></li>
+            <li class="ellipsis"></li>
+            <li><a href="#" aria-label="Page 12">12</a></li>
+            <li><a href="#" aria-label="Page 13">13</a></li>
+            <li><a href="#" aria-label="Next page">Suivant</a></li>
+        </ul>
+    </div>-->
 
 </div>
-<div class="row column">
-    <ul class="pagination" role="navigation" aria-label="Pagination">
-        <li class="disabled">Previous</li>
-        <li class="current"><span class="show-for-sr">You're on page</span> 1</li>
-        <li><a href="#" aria-label="Page 2">2</a></li>
-        <li><a href="#" aria-label="Page 3">3</a></li>
-        <li><a href="#" aria-label="Page 4">4</a></li>
-        <li class="ellipsis"></li>
-        <li><a href="#" aria-label="Page 12">12</a></li>
-        <li><a href="#" aria-label="Page 13">13</a></li>
-        <li><a href="#" aria-label="Next page">Next</a></li>
-    </ul>
-</div>
-<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-<script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
-<script>
-      $(document).foundation();
-    </script>
 
 {% endblock %}
+
+{% block footer %}{% include 'partials/footer.html.twig' %}{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Login{% endblock %}
+
+{% block nav %}{% include 'partials/nav.html.twig' %}{% endblock %}
+
+{% block body %}
+
+    <div class="row" id="content">
+
+        {% block fos_user_content %}
+            {{ include('@FOSUser/Security/login_content.html.twig') }}
+        {% endblock fos_user_content %}
+
+    </div>
+
+
+{% endblock %}
+
+{% block footer %}{% include 'partials/footer.html.twig' %}{% endblock %}

@@ -1,21 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Nouveau post{% endblock %}
+{% block title %}Modifier un article{% endblock %}
 
 {% block nav %}{% include 'partials/nav.html.twig' %}{% endblock %}
 
 {% block body %}
+
     <div class="small-banner callout large primary">
         <div class="row column text-center">
             <h1>{{ title }}</h1>
         </div>
         {% for message in app.flashes('notice') %}
-            <div data-closable class="callout alert-callout-border success">
-                <strong>Yay!</strong><p>{{ message }}</p>
-                <!--<button class="close-button" aria-label="Dismiss alert" type="button" data-close>
-                    <span aria-hidden="true">&times;</span>
-                </button>-->
-            </div>
+        <div data-closable class="callout alert-callout-border success">
+            <strong>Yay!</strong><p>{{ message }}</p>
+            <!--<button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                <span aria-hidden="true">&times;</span>
+            </button>-->
+        </div>
         {% endfor %}
     </div>
     <div class="row column">

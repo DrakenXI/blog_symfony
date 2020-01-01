@@ -1,0 +1,202 @@
+/* banner before content */
+.banner { background: url(/assets/cookies.jpg) center center no-repeat;
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+            -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+        flex-direction: column;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+        align-items: center;
+            -webkit-justify-content: space-between;
+            -ms-flex-pack: justify;
+        justify-content: space-between;
+        height: 400px;
+        text-align: center;
+        color: #fefefe;
+        text-shadow: 2px 2px 3px black;
+}
+.small-banner { background: url(/assets/cookies.jpg) center center no-repeat;
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+            -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+        flex-direction: column;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+        align-items: center;
+            -webkit-justify-content: space-between;
+            -ms-flex-pack: justify;
+        justify-content: space-between;
+        height: 200px;
+        text-align: center;
+        color: #fefefe;
+        text-shadow: 2px 2px 3px black;
+}
+.blog-post { margin-top: 1% ; margin-top: 1%;}
+
+
+/* for flash messages */
+
+.alert-callout-border{
+  width: 100%;
+  padding: 1.3rem;
+  border-left-width: 0.3125rem;
+  border-left-color: #cacaca;
+  opacity: 0.5;
+  filter: alpha(opacity=50); /* For IE8 and earlier */
+}
+
+.alert-callout-border strong {
+  color: #0a0a0a;
+}
+
+.alert-callout-border .close-button {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.alert-callout-border.radius {
+  border-radius: 0.6rem;
+}
+
+.alert-callout-border.primary {
+  border-left-color: #1779ba;
+}
+
+.alert-callout-border.primary strong {
+  color: #1779ba;
+}
+
+.alert-callout-border.secondary {
+  border-left-color: #767676;
+}
+
+.alert-callout-border.secondary strong {
+  color: #767676;
+}
+
+.alert-callout-border.alert {
+  border-left-color: #cc4b37;
+}
+
+.alert-callout-border.alert strong {
+  color: #cc4b37;
+}
+
+.alert-callout-border.success{
+  border-left-color: #3adb76;
+}
+
+.alert-callout-border.success strong {
+  color: #3adb76;
+}
+
+.alert-callout-border.warning {
+  border-left-color: #ffae00;
+}
+
+.alert-callout-border.warning strong {
+  color: #ffae00;
+}
+
+
+/* pretty article title */
+
+.type-sidelines {
+  display: block;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.type-sidelines span {
+  display: inline-block;
+  position: relative;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
+.type-sidelines span:before, .type-sidelines span:after {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 9999px;
+  top: 50%;
+  border-top-style: solid;
+  border-top-width: 1px;
+}
+
+.type-sidelines span:before {
+  right: 100%;
+}
+
+.type-sidelines span:after {
+  left: 100%;
+}
+
+/* Login */
+
+.sign-in-form {
+  padding: 1rem 1.5em;
+  border-radius: .5rem;
+  background-color: #3d454f;
+}
+
+.sign-in-form h4 {
+  color: white;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.sign-in-form label {
+  text-transform: uppercase;
+  color: #adadad;
+  letter-spacing: 1px;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.sign-in-form input {
+  color: white;
+}
+
+.sign-in-form input:focus {
+  opacity: .8;
+  color: #3d454f;
+}
+
+.sign-in-form-username,
+.sign-in-form-password {
+  border-radius: 30px;
+  border: none;
+  opacity: .1;
+  transition: all ease .4s;
+}
+
+.sign-in-form-button {
+  border-radius: 30px;
+  border: 1px solid #fff;
+  color: #fff;
+  background-color: transparent;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  width: 100%;
+  padding: 1rem;
+  transition: all ease .4s;
+}
+
+.sign-in-form-button:hover {
+  background-color: #44c8ed;
+  border-color: #44c8ed;
+}

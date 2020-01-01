@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Controller associé aux vues du site
+ * Controller associe aux vues du site
  */
 class BlogController extends AbstractController
 {
@@ -21,19 +21,23 @@ class BlogController extends AbstractController
         $posts = $this->getDoctrine()->getRepository(Post::class)
             ->findBy([], array("published" => "DESC"), 10);
         return $this->render('blog/index.html.twig', [
-            "title" => "Acceuil",
+            "title" => "Bienvenue",
             "posts" => $posts
         ]);
     }
 
     /**
      * Fonction associant la vue d'un post individuel à l'adresse /posts/{idPost}.
-     * @Route("/post/{idPost}", name="post", requirements={"idPost"="\d+"})
+     * @Route("/post/{url}", name="post", requirements={"url"="[a-zA-Z0-9]+([a-zA-Z0-9]*)(_[a-zA-Z0-9]+|-[a-zA-Z0-9]+)*"})
      */
-    public function post(int $idPost)
+    public function post(string $url)
     {
+        // fetch post from DB
+        $entityManager = $this->getDoctrine()->getManager();
+        $post = $entityManager->getRepository(Post::class)->findOneBy(['url_alias' => $url]);
+
         return $this->render('blog/post.html.twig', [
-            'id_post' => $idPost,
+            'post' => $post,
         ]);
     }
 }

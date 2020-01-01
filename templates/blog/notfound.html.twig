@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Blog{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="top-bar">
+    <div class="top-bar-left">
+        <ul class="menu">
+            <li class="menu-text"><a href="/">Blog de SuperCookies2000</a></li>
+        </ul>
+    </div>
+
+    <div class="top-bar-right">
+        <ul class="menu">
+            <li><a href="#">Connexion</a></li>
+            <!--<li><a href="#">Nouvel article</a></li>
+            <li><a href="#">Lien deux</a></li>
+            <li><a href="#">lien trois</a></li>-->
+        </ul>
+    </div>
+</div>
+
+<div class="callout large primary">
+    <div class="row column text-center">
+        <h1>Oups... L'article ne semble pas exister...</h1>
+        <!-- If there is any flash messages, display them in a pop-up -->
+        <!-- More about flash messages : https://symfony.com/doc/current/controller.html#flash-messages -->
+        {% for message in app.flashes('notice') %}
+        <div data-closable class="callout alert-callout-border success">
+            <strong>Yay!</strong> - {{ message }}
+            <!--<button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                <span aria-hidden="true">&times;</span>
+            </button>-->
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="row" id="content">
+    <p>TODO faire message excuse, rediriger user vers qqch, meme si admin</p>
+</div>
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+<script>
+      $(document).foundation();
+    </script>
+
+{% endblock %}
