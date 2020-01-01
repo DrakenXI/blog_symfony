@@ -13,7 +13,7 @@
     <div class="top-bar-right">
         <ul class="menu">
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                <li>{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</li>
+                <li><a href="{{ path('fos_user_profile_show') }}" title="{{ 'global.profile'|trans({}, 'GlobalTrad') }}">{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</a></li>
                 <li><a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a></li>
             {% else %}
                 <li><a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a></li>
