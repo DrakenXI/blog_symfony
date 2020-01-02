@@ -5,7 +5,6 @@
 {% block nav %}{% include 'partials/nav.html.twig' %}{% endblock %}
 
 {% block body %}
-
     <div class="small-banner callout large primary">
         <div class="row column text-center">
             <h1>{{ title }}</h1>
@@ -20,12 +19,17 @@
         {% endfor %}
     </div>
     <div class="row column">
-        {{ form(form) }}
-    </div>
+    {{ form_start(form) }}
+        {{ form_errors(form) }}
 
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
-    <script>
-          $(document).foundation();
-    </script>
+        {{ form_row(form.titre, {'label': 'Titre'}) }}
+        {{ form_row(form.url_alias, {'label': 'URL'}) }}
+        {{ form_row(form.content, {'label': 'Contenu'}) }}
+        {{ form_row(form.published, {'label': 'Date de publication'}) }}
+
+        {{ form_row(form.save, { 'label': 'Enregister' }) }}
+    {{ form_end(form) }}
+    </div>
 {% endblock %}
+
+{% block footer %}{% include 'partials/footer.html.twig' %}{% endblock %}

@@ -5,11 +5,6 @@
 {% block nav %}{% include 'partials/nav.html.twig' %}{% endblock %}
 
 {% block body %}
-
-    <style>
-        .row .column .text-center * { background-image: url('./assets/cookies.jpg');}
-        .row .column .text-center { background-image: url('./assets/cookies.jpg');}
-    </style>
     <div class="callout large primary small-banner">
         <div class="row column text-center">
             <h1>{{ post.titre }}</h1>
@@ -17,14 +12,13 @@
         {% for message in app.flashes('notice') %}
         <div data-closable class="callout alert-callout-border success">
             <strong>Yay!</strong><p>{{ message }}</p>
-            <!--<button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+            <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
                 <span aria-hidden="true">&times;</span>
-            </button>-->
+            </button>
         </div>
         {% endfor %}
     </div>
     <div class="row" id="content">
-    <div class="row column" id="content">
         <div class="medium-8 columns">
             <div class="blog-post">
                 <p>{{ post.content }}</p>
@@ -43,9 +37,6 @@
     <div class="row column">
         <p>Retour à la <a href='/'>page d'accueil</a>.</p>
     </div>
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
-    <script>
-          $(document).foundation();
-    </script>
 {% endblock %}
+
+{% block footer %}{% include 'partials/footer.html.twig' %}{% endblock %}
