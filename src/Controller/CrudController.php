@@ -119,9 +119,6 @@ class CrudController extends AbstractController
             return $this->render('crud/edit.html.twig',  array('form' =>     $form->createView(),
                                                         'title' => 'Modification d\'un article',));
         } else {
-            // throw $this->createNotFoundException(
-            //     'No product found for post '.$url
-            // );
             // post does not exist, inform user (this should not happen)
             return $this->render('blog/notfound.html.twig',[]);
         }
@@ -152,6 +149,7 @@ class CrudController extends AbstractController
             'error',
             'Erreur lors de la suppression !'
             );
+            return $this->render('blog/notfound.html.twig',[]);
         }
     }
 }

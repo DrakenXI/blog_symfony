@@ -2,10 +2,8 @@
 
 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
 
-    <div class="sign-in-form">
-        <h4 class="text-center">{{ 'layout.register'|trans }}</h4>
+    <div>
         {{ form_widget(form) }}
-
             <input class="sign-in-form-button" type="submit" value="{{ 'registration.submit'|trans }}" />
     </div>
 {{ form_end(form) }}

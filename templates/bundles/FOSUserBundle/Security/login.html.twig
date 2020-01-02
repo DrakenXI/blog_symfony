@@ -5,16 +5,25 @@
 {% block nav %}{% include 'partials/nav.html.twig' %}{% endblock %}
 
 {% block body %}
-
-    <div class="row" id="content">
-
-        {% block fos_user_content %}
-            {{ include('@FOSUser/Security/login_content.html.twig') }}
-        {% endblock fos_user_content %}
-
+    <div id="main-content-section" data-magellan-target="main-content-section">
+        <div class="small-banner callout large primary bandeau">
+            <div class="row column text-center">
+                <h1>Connexion</h1>
+            </div>
+        </div>
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            <div class="row">
+                <p>Vous êtes déjà connecté.</p>
+                <p>Retour à la <a href='/'>page d'accueil</a>.</p>
+            </div>
+        {% else %}
+            <div class="row sign-in-form" id="content">
+                {% block fos_user_content %}
+                    {{ include('@FOSUser/Security/login_content.html.twig') }}
+                {% endblock fos_user_content %}
+            </div>
+        {% endif %}
     </div>
-
-
 {% endblock %}
 
 {% block footer %}{% include 'partials/footer.html.twig' %}{% endblock %}

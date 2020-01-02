@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Post;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Controller associe aux vues du site
@@ -16,13 +17,22 @@ class BlogController extends AbstractController
      * Page d'accueil liste tous les posts du blog.
      * @Route("/", name="blog")
      */
-    public function index()
+    public function index(Request $request)
     {
+        // pagination stuff
+        if( $request->query->get('slot')!=null){
+            $slot = $request->query->get('slot');
+        } else {
+            $slot = 0;
+        }
+
+        // fetch all posts from DB
         $posts = $this->getDoctrine()->getRepository(Post::class)
             ->findBy([], array("published" => "DESC"), 10);
         return $this->render('blog/index.html.twig', [
             "title" => "Bienvenue",
-            "posts" => $posts
+            "posts" => $posts,
+            "slot" => $slot
         ]);
     }
 
@@ -35,6 +45,10 @@ class BlogController extends AbstractController
         // fetch post from DB
         $entityManager = $this->getDoctrine()->getManager();
         $post = $entityManager->getRepository(Post::class)->findOneBy(['url_alias' => $url]);
+
+        if(!$post){
+            return $this->render('blog/notfound.html.twig',[]);
+        }
 
         return $this->render('blog/post.html.twig', [
             'post' => $post,

@@ -6,11 +6,10 @@
 
 {% block body %}
     <div id="main-content-section" data-magellan-target="main-content-section">
-        <div class="banner callout large primary bandeau">
+        <section class="banner callout large primary bandeau">
             <div class="row column text-center">
                 <h1>{{ title }}</h1>
                 <p>Bienvenue sur le blog de SuperCookies2000. Ici vous trouverez différents articles sur le thème des cookies !</p>
-                <br/>
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                     <p>Bon retour parmi nous {{ app.user.username }}.</p>
                 {% else %}
@@ -28,30 +27,34 @@
                 </div>
                 {% endfor %}
             </div>
-        </div>
-        <div class="row" id="content">
-            {% for post in posts %}
-                <div class="blog-post">
-                    <h3 class="type-sidelines"><span>{{ post.titre }} <small>{{ post.published|date("d/m/Y") }}</small></span></h3>
-                    <a href='{{path('post', {url: post.urlalias}) }}'>Lire l'article</a>
-                </div>
+        </section>
+        <section class="row blog-post-list" id="content">
+            {# if URL is manually entered, go back to 1rst page #}
+            {% if (slot >  posts|length // 5) %}
+                {% set slot = 0 %}
+            {% endif %}
+            {% for post in posts|slice(slot * 5, (slot * 5) + 5) %}
+                <article class="blog-post">
+                    <header>
+                        <a href='{{path('post', {url: post.urlalias}) }}'><h3 class="type-sidelines"><span>{{ post.titre }} <small>{{ post.published|date("d/m/Y") }}</small></span></h3></a>
+                    </header>
+                    <p><a href='{{path('post', {url: post.urlalias}) }}'>Lire l'article</a></p>
+                </article>
             {% endfor %}
-
-        </div>
-        <!--<div class="row column">
+        </section>
+        <div class="row column">
             <ul class="pagination" role="navigation" aria-label="Pagination">
-                <li class="disabled">Précédent</li>
-                <li class="current"><span class="show-for-sr">Vous êtes sur la page</span> 1</li>
-                <li><a href="#" aria-label="Page 2">2</a></li>
-                <li><a href="#" aria-label="Page 3">3</a></li>
-                <li><a href="#" aria-label="Page 4">4</a></li>
-                <li class="ellipsis"></li>
-                <li><a href="#" aria-label="Page 12">12</a></li>
-                <li><a href="#" aria-label="Page 13">13</a></li>
-                <li><a href="#" aria-label="Next page">Suivant</a></li>
+                {% for i in 0..(posts|length // 5) %}
+                    <li><a href='{{path('blog', {slot: i}) }}' aria-label="Page {{ i + 1 }}">
+                        {% if (i == slot) %}
+                            <strong>{{ i + 1 }}</strong>
+                        {% else %}
+                        {{ i + 1 }}
+                        {% endif %}
+                    </a></li>
+                {% endfor %}
             </ul>
-        </div>-->
-
+        </div>
     </div>
 
 {% endblock %}

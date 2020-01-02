@@ -5,15 +5,25 @@
 {% block nav %}{% include 'partials/nav.html.twig' %}{% endblock %}
 
 {% block body %}
-
-    <div class="row" id="content">
-
-        {% block fos_user_content %}
-            {% include "@FOSUser/Registration/register_content.html.twig" %}
-        {% endblock fos_user_content %}
-
+<div id="main-content-section" data-magellan-target="main-content-section">
+    <div class="small-banner callout large primary bandeau">
+        <div class="row column text-center">
+            <h1>Inscription</h1>
+        </div>
     </div>
-
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        <div class="row">
+            <p>Il semblerait que vous avez déjà un compte... Si cela vous semble toutefois nécessaire, déconnectez-vous pour en créer un nouveau.</p>
+            <p>Retour à la <a href='/'>page d'accueil</a>.</p>
+            <a href='/logout'>Je veux me déconnecter.</a>
+        </div>
+    {% else %}
+        <div class="row sign-in-form" id="content">
+            {% block fos_user_content %}
+                {% include "@FOSUser/Registration/register_content.html.twig" %}
+            {% endblock fos_user_content %}
+        </div>
+        {% endif %}
 
 {% endblock %}
 
