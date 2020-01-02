@@ -10,7 +10,6 @@
             <div class="row column text-center">
                 <h1>{{ title }}</h1>
                 <p>Bienvenue sur le blog de SuperCookies2000. Ici vous trouverez différents articles sur le thème des cookies !</p>
-                <br/>
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                     <p>Bon retour parmi nous {{ app.user.username }}.</p>
                 {% else %}
