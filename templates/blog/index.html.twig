@@ -43,7 +43,7 @@
             {% endfor %}
         </section>
         <div class="row column">
-            <ul class="pagination" role="navigation" aria-label="Pagination">
+            <ul class="pagination" aria-label="Pagination">
                 {% for i in 0..(posts|length // 5) %}
                     <li><a href='{{path('blog', {slot: i}) }}' aria-label="Page {{ i + 1 }}">
                         {% if (i == slot) %}
