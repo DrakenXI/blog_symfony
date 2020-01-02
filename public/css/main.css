@@ -11,7 +11,7 @@
 
 /* Nav */
 .top-bar *, .top-bar {
-    background-color:#8B4513;
+    background-color:#A0522D;
 }
 
 .top-bar a{
@@ -218,7 +218,7 @@
 .sign-in-form {
   padding: 1rem 1.5em;
   border-radius: .5rem;
-  background-color: #3d454f;
+  background-color: #A0522D;
 }
 .sign-in-form h4 {
   color: white;
@@ -228,7 +228,7 @@
 }
 .sign-in-form label {
   text-transform: uppercase;
-  color: #adadad;
+  color: #FFF8DC;
   letter-spacing: 1px;
   font-weight: 600;
   margin-bottom: 1rem;
@@ -259,6 +259,6 @@
   transition: all ease .4s;
 }
 .sign-in-form-button:hover {
-  background-color: #44c8ed;
-  border-color: #44c8ed;
+  background-color: #8B4513;
+  border-color: #8B4513;
 }
