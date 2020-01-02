@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType as DateTimeType;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints\Type;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 
@@ -98,6 +99,9 @@ class Post
     {
         $metadata->addPropertyConstraint('titre', new NotBlank());
         $metadata->addPropertyConstraint('url_alias', new NotBlank());
+        $metadata->addConstraint(new UniqueEntity([
+            'fields' => 'url_alias',
+        ]));
         $metadata->addPropertyConstraint('content', new NotBlank());
         $metadata->addPropertyConstraint(
             'published',
