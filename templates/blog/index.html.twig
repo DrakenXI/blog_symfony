@@ -6,7 +6,7 @@
 
 {% block body %}
     <div id="main-content-section" data-magellan-target="main-content-section">
-        <div class="banner callout large primary bandeau">
+        <section class="banner callout large primary bandeau">
             <div class="row column text-center">
                 <h1>{{ title }}</h1>
                 <p>Bienvenue sur le blog de SuperCookies2000. Ici vous trouverez différents articles sur le thème des cookies !</p>
@@ -27,16 +27,18 @@
                 </div>
                 {% endfor %}
             </div>
-        </div>
-        <div class="row" id="content">
+        </section>
+        <section class="row blog-post-list" id="content">
             {% for post in posts %}
-                <div class="blog-post">
-                    <h3 class="type-sidelines"><span>{{ post.titre }} <small>{{ post.published|date("d/m/Y") }}</small></span></h3>
-                    <a href='{{path('post', {url: post.urlalias}) }}'>Lire l'article</a>
-                </div>
+                <article class="blog-post">
+                    <header>
+                        <a href='{{path('post', {url: post.urlalias}) }}'><h3 class="type-sidelines"><span>{{ post.titre }} <small>{{ post.published|date("d/m/Y") }}</small></span></h3></a>
+                    </header>
+                    <p><a href='{{path('post', {url: post.urlalias}) }}'>Lire l'article</a></p>
+                </article>
             {% endfor %}
 
-        </div>
+        </section>
         <!--<div class="row column">
             <ul class="pagination" role="navigation" aria-label="Pagination">
                 <li class="disabled">Précédent</li>
