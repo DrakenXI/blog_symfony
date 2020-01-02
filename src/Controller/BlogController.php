@@ -46,6 +46,10 @@ class BlogController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
         $post = $entityManager->getRepository(Post::class)->findOneBy(['url_alias' => $url]);
 
+        if(!$post){
+            return $this->render('blog/notfound.html.twig',[]);
+        }
+
         return $this->render('blog/post.html.twig', [
             'post' => $post,
         ]);

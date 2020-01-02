@@ -29,7 +29,7 @@
             </div>
         </section>
         <section class="row blog-post-list" id="content">
-            {#  #}
+            {# if URL is manually entered, go back to 1rst page #}
             {% if (slot >  posts|length // 5) %}
                 {% set slot = 0 %}
             {% endif %}
@@ -42,21 +42,19 @@
                 </article>
             {% endfor %}
         </section>
-        {# if posts|length > 5 #}
-            <div class="row column">
-                <ul class="pagination" role="navigation" aria-label="Pagination">
-                    {% for i in 0..(posts|length // 5) %}
-                        <li><a href='{{path('blog', {slot: i}) }}' aria-label="Page {{ i + 1 }}">
-                            {% if (i == slot) %}
-                                <strong>{{ i + 1 }}</strong>
-                            {% else %}
-                            {{ i + 1 }}
-                            {% endif %}
-                        </a></li>
-                    {% endfor %}
-                </ul>
-            </div>
-        {# endif #}
+        <div class="row column">
+            <ul class="pagination" role="navigation" aria-label="Pagination">
+                {% for i in 0..(posts|length // 5) %}
+                    <li><a href='{{path('blog', {slot: i}) }}' aria-label="Page {{ i + 1 }}">
+                        {% if (i == slot) %}
+                            <strong>{{ i + 1 }}</strong>
+                        {% else %}
+                        {{ i + 1 }}
+                        {% endif %}
+                    </a></li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
 
 {% endblock %}
