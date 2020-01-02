@@ -97,14 +97,13 @@
   padding: 1.3rem;
   border-left-width: 0.3125rem;
   border-left-color: #cacaca;
-  opacity: 0.5;
-  filter: alpha(opacity=50); /* For IE8 and earlier */
 }
 .alert-callout-border strong {
   color: #0a0a0a;
 }
 .alert-callout-border .close-button {
   position: absolute;
+  color:#3adb76;
   top: 50%;
   -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);

@@ -31,6 +31,11 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
+        # securing CRUD, seen on : https://symfony.com/doc/current/security.html#checking-to-see-if-a-user-is-logged-in-is-authenticated-fully
+        - { path: ^/new, role: IS_AUTHENTICATED_REMEMBERED }
+        - { path: ^/post/, role: IS_AUTHENTICATED_REMEMBERED }
+        - { path: ^/delete/, role: IS_AUTHENTICATED_REMEMBERED }
+        - { path: ^/edit/, role: IS_AUTHENTICATED_REMEMBERED }
 
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER
@@ -38,4 +43,3 @@ security:
 
     encoders:
         FOS\UserBundle\Model\UserInterface: sha512
-

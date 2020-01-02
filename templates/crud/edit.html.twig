@@ -12,9 +12,7 @@
         {% for message in app.flashes('notice') %}
         <div data-closable class="callout alert-callout-border success">
             <strong>Yay!</strong><p>{{ message }}</p>
-            <!--<button class="close-button" aria-label="Dismiss alert" type="button" data-close>
-                <span aria-hidden="true">&times;</span>
-            </button>-->
+            <button id="close-button" class="close-button" aria-label="Dismiss alert" type="button" data-close>⊗</button>
         </div>
         {% endfor %}
     </div>

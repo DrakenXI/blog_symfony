@@ -1,4 +1,3 @@
-# blog_symfony
 # Blog de SuperCookies2000
 
 Blog réalisé dans le cadre de la matière HMIN302 E Application. Il a pour thème les cookies (informatiques, biscuits) et ses articles ont été rédigés à partir de contenu trouvé sur Internet.
@@ -16,11 +15,13 @@ Username : `admin`, mot de passe : `wnpbGx9F5NaS4S8` .
 
 
 
-## Fonctionnalités 
+## Fonctionnalités
 
 * Connection à l'aide de FOSUser ;
-* CRUD sur les articles ;
-* Page d'accueil qui liste dynamiquement les articles présent dans le blog.
+* Possibilité de s'enregister sur le blog ;
+* Opérations CRUD sur les articles : création, consultation, modification, suppression d'un article ;
+* Opérations CRUD sécurisées ;
+* Page d'accueil qui liste dynamiquement les articles présents dans le blog.
 
 
 

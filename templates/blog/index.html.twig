@@ -22,11 +22,9 @@
                 <!-- If there is any flash messages, display them in a pop-up -->
                 <!-- More about flash messages : https://symfony.com/doc/current/controller.html#flash-messages -->
                 {% for message in app.flashes('notice') %}
-                <div data-closable class="callout alert-callout-border success">
-                    <strong>Yay!</strong><p>{{ message }}</p>
-                    <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                <div id="flashes" data-closable class="callout alert-callout-border success">
+                    <strong>Yay!</strong>  <p>{{ message }}</p>
+                    <button id="close-button" class="close-button" aria-label="Dismiss alert" type="button" data-close>⊗</button>
                 </div>
                 {% endfor %}
             </div>
