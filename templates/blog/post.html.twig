@@ -2,8 +2,6 @@
 
 {% block title %}Article : {{ post.titre }} {% endblock %}
 
-{% block nav %}{% include 'partials/nav.html.twig' %}{% endblock %}
-
 {% block body %}
     <div class="callout large primary small-banner">
         <div class="row column text-center">
@@ -36,5 +34,3 @@
         <p>Retour à la <a href='/'>page d'accueil</a>.</p>
     </div>
 {% endblock %}
-
-{% block footer %}{% include 'partials/footer.html.twig' %}{% endblock %}
